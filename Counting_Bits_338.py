@@ -1,8 +1,21 @@
+# encoding:utf8
 import math
 
 
 class Solution:
+
     def countBits(self, num):
+        """
+        :type num: int
+        :rtype: List[int]
+        """
+        dp = [0] * (num + 1)
+        dp[0] = 0
+        for i in range(1, num + 1):
+            dp[i] = dp[i & (i - 1)] + 1
+        return dp
+
+    def countBits1(self, num):
         """
         :type num: int
         :rtype: List[int]
@@ -26,3 +39,7 @@ class Solution:
 
 solution = Solution()
 print(solution.countBits(5))
+
+
+# 找规律
+# 巧妙运用i * (i-1)

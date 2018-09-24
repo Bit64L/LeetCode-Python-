@@ -35,3 +35,5 @@ class Solution(object):
 
 solution = Solution()
 print(solution.search([], 8))
+
+# mid分割的两部分，必然有一边是有序的
