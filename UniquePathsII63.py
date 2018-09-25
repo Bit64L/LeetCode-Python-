@@ -60,6 +60,7 @@ class Solution:
         helper(0, 0, direction, obstacleGrid)
         return self.ans
 
+
 solution = Solution()
 print(solution.uniquePathsWithObstacles(
     [
