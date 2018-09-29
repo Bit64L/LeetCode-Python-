@@ -6,12 +6,12 @@ class Solution:
         :rtype: int
         """
         mark = [0] * (N + 1)
-        self.ans = 0
 
         def helper(work, mark, N, mapping):
-            if work > N:
+            if work == N + 1:
                 return 1
-            cache_count = mapping.get(str(mark) + '-' + str(work), None)
+            key = (work, str(mark))
+            cache_count = mapping.get(key, None)
             if cache_count is not None:
                 return cache_count
             count = 0
@@ -20,9 +20,13 @@ class Solution:
                     mark[i] = 1
                     count += helper(work + 1, mark, N, mapping)
                     mark[i] = 0
-            mapping[str(mark) + '-' + str(work)] = count
-        helper(1, mark, N, {})
-        return self.ans
+            mapping[key] = count
+            return count
+        mapping = {}
+        ans = helper(1, mark, N, mapping)
+        return ans
+
 
 solution = Solution()
-print(solution.countArrangement(15))
+print(solution.countArrangement(4))
+# DP + Backtracing
